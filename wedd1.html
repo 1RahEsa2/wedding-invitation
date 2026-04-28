@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wedding Invitation</title>
+
+<style>
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #fdf6f0;
+}
+
+/* Door */
+#door {
+    width: 300px;
+    height: 400px;
+    margin: 100px auto;
+    background-image: url('door.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* Hidden section */
+#invitation {
+    display: none;
+}
+
+/* Each image section */
+.section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="door"></div>
+
+<div id="invitation">
+
+    <div class="section">
+        <img src="img1.jpg">
+    </div>
+
+    <div class="section">
+        <img src="img1.jpg">
+    </div>
+
+    <div class="section">
+        <img src="img1.jpg">
+    </div>
+
+</div>
+
+<script>
+document.getElementById("door").onclick = function() {
+    this.style.display = "none";
+    document.getElementById("invitation").style.display = "block";
+};
+</script>
+
+</body>
+</html>
