@@ -2,71 +2,527 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Wedding Invitation</title>
 
 <style>
-html {
-    scroll-behavior: smooth;
+
+/* =========================
+   GENERAL
+========================= */
+
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
-    background: #fdf6f0;
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#f5e6d8;
+    overflow-x:hidden;
 }
 
-/* Door */
-#door {
-    width: 100vw;
-    height: 100vh;
-    background-image: url('door.jpg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #000;
+/* Unified spacing */
+section{
+    padding:100px 20px;
+    background:#f5e6d8;
 }
 
-/* Hidden section */
-#invitation {
-    display: none;
+/* =========================
+   OPENING COVER
+========================= */
+
+#cover{
+
+    width:100%;
+    height:100vh;
+
+    background-image:url("closed_env.png");
+    background-size:cover;
+    background-position:center;
+
+    cursor:pointer;
+
+    transition:1s;
 }
 
-/* Each image section */
-.section img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0;
-    padding: 0;
+/* =========================
+   MAIN CONTENT
+========================= */
+
+#content{
+    display:none;
 }
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+}
+
+/* Open envelope image */
+.hero-image{
+
+    width:80%;
+    max-width:700px;
+
+    animation:float 3s infinite ease-in-out;
+}
+
+/* Floating animation */
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   INVITATION SECTION
+========================= */
+
+.names-section{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    transform:translateY(80px);
+
+    transition:1.2s;
+}
+
+/* Animation */
+.names-section.show{
+
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Invitation image */
+.invitation-image{
+
+    width:85%;
+    max-width:900px;
+
+    border-radius:30px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   CLOCK SECTION
+========================= */
+
+.clock-section{
+
+    min-height:80vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Clock style */
+.clock{
+
+    font-size:80px;
+    font-weight:bold;
+
+    color:#8b6b61;
+
+    letter-spacing:5px;
+
+    text-align:center;
+}
+
+/* =========================
+   DATE SECTION
+========================= */
+
+.date-section{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+}
+
+/* Date image */
+.date-image{
+
+    width:85%;
+    max-width:900px;
+
+    display:block;
+
+    border-radius:30px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+
+    opacity:0;
+    transform:translateY(80px);
+
+    transition:1.2s;
+}
+
+/* Animation */
+.date-image.show{
+
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   MAP SECTION
+========================= */
+
+.map-section{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+}
+
+/* Map title */
+.map-title{
+
+    font-size:60px;
+
+    color:#8b5e3c;
+
+    margin-bottom:50px;
+
+    text-align:center;
+}
+
+/* Map container */
+.map-container{
+
+    width:90%;
+    max-width:1000px;
+
+    height:500px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:white;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Google map */
+.map-container iframe{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+}
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.final-message{
+
+    text-align:center;
+
+    font-size:38px;
+
+    color:#8b5e3c;
+
+    font-family:"Tahoma", sans-serif;
+
+    padding-bottom:120px;
+}
+
 </style>
-
 </head>
 
 <body>
 
-<div id="door"></div>
+<!-- =========================
+     OPENING COVER
+========================= -->
 
-<div id="invitation">
+<div id="cover"></div>
 
-    <div class="section">
-        <img src="img1.jpg">
-    </div>
+<!-- =========================
+     WEBSITE CONTENT
+========================= -->
 
-    <div class="section">
-        <img src="img1.jpg">
-    </div>
+<div id="content">
 
-    <div class="section">
-        <img src="img1.jpg">
-    </div>
+    <!-- =========================
+         HERO SECTION
+    ========================= -->
+
+    <section class="hero">
+
+        <img
+            src="open_env.png"
+            class="hero-image">
+
+    </section>
+
+    <!-- =========================
+         INVITATION SECTION
+    ========================= -->
+
+    <section class="names-section" id="namesSection">
+
+        <img
+            src="invitation.png"
+            class="invitation-image">
+
+    </section>
+
+    <!-- =========================
+         CLOCK SECTION
+    ========================= -->
+
+    <section class="clock-section">
+
+        <div class="clock" id="clock">
+            00:00:00
+        </div>
+
+    </section>
+
+    <!-- =========================
+         DATE SECTION
+    ========================= -->
+
+    <section class="date-section">
+
+        <img
+            src="date.jpg"
+            class="date-image"
+            id="dateImage">
+
+    </section>
+
+    <!-- =========================
+         MAP SECTION
+    ========================= -->
+
+    <section class="map-section">
+
+        <h1 class="map-title">
+            Wedding Location
+        </h1>
+
+        <div class="map-container">
+
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.112356474853!2d35.86427812488797!3d32.54984649556178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c768518faa80d%3A0x76368ba33b0a2924!2z2LXYp9mE2Kkg2KfZhNi02LHZgiDZhNmE2KfYrdiq2YHYp9mE2KfYqg!5e0!3m2!1sar!2sjo!4v1778512398156!5m2!1sar!2sjo"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         FINAL MESSAGE
+    ========================= -->
+
+    <section>
+
+        <div class="final-message">
+يمنع اصطحاب الاطفال<br>
+    يمنع التصوير منعا باتا 
+       </div>
+
+    </section>
 
 </div>
 
 <script>
-document.getElementById("door").onclick = function() {
-    this.style.display = "none";
-    document.getElementById("invitation").style.display = "block";
+
+/* =========================
+   OPEN INVITATION
+========================= */
+
+document.getElementById("cover").onclick = function(){
+
+    this.style.opacity = "0";
+
+    setTimeout(() => {
+
+        this.style.display = "none";
+
+        document.getElementById("content").style.display = "block";
+
+    },1000);
 };
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const namesSection =
+document.getElementById("namesSection");
+
+const dateImage =
+document.getElementById("dateImage");
+
+const clock =
+document.getElementById("clock");
+
+const clockSection =
+document.querySelector(".clock-section");
+
+/* =========================
+   SCROLL ANIMATIONS
+========================= */
+
+window.addEventListener("scroll", () => {
+
+    /* Invitation animation */
+    const top =
+    namesSection.getBoundingClientRect().top;
+
+    if(top < window.innerHeight - 100){
+
+        namesSection.classList.add("show");
+    }
+
+    /* Date animation */
+    const imageTop =
+    dateImage.getBoundingClientRect().top;
+
+    if(imageTop < window.innerHeight - 100){
+
+        dateImage.classList.add("show");
+    }
+
+    /* Clock animation trigger */
+    const clockTop =
+    clockSection.getBoundingClientRect().top;
+
+    if(clockTop < window.innerHeight - 100){
+
+        startClockAnimation();
+    }
+});
+
+/* =========================
+   CLOCK ANIMATION
+========================= */
+
+const target = {
+    hours: "07",
+    minutes: "30",
+    seconds: "00"
+};
+
+let clockStarted = false;
+
+function randomNumber(max){
+
+    return String(
+        Math.floor(Math.random() * max)
+    ).padStart(2,"0");
+}
+
+function startClockAnimation(){
+
+    if(clockStarted) return;
+
+    clockStarted = true;
+
+    let h = "00";
+    let m = "00";
+    let s = "00";
+
+    const interval = setInterval(() => {
+
+        h = randomNumber(99);
+        m = randomNumber(59);
+        s = randomNumber(59);
+
+        clock.innerHTML =
+        `${h}:${m}:${s}`;
+
+    }, 50);
+
+    setTimeout(() => {
+
+        clearInterval(interval);
+
+        let currentM;
+        let currentS;
+
+        const interval2 = setInterval(() => {
+
+            currentM = randomNumber(59);
+            currentS = randomNumber(59);
+
+            clock.innerHTML =
+            `${target.hours}:${currentM}:${currentS}`;
+
+        }, 50);
+
+        setTimeout(() => {
+
+            clearInterval(interval2);
+
+            const interval3 = setInterval(() => {
+
+                currentS = randomNumber(59);
+
+                clock.innerHTML =
+                `${target.hours}:${target.minutes}:${currentS}`;
+
+            }, 50);
+
+            setTimeout(() => {
+
+                clearInterval(interval3);
+
+                clock.innerHTML =
+                `${target.hours}:${target.minutes}:${target.seconds}`;
+
+            }, 2000);
+
+        }, 2000);
+
+    }, 2000);
+}
+
 </script>
 
 </body>
